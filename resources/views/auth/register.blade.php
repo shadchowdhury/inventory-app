@@ -1,4 +1,4 @@
-@extends('layouts.guest-main')
+@extends('layouts.guest')
 
 @section('content')
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            <input type="password" class="form-control @error('password') border border-danger @enderror" name="password" required autocomplete="new-password" placeholder="Enter password">
+            <input type="password" class="form-control @error('password') border border-danger @enderror" name="password" required autocomplete="new-password" placeholder="password">
             @error('password')
             <p class="tx-danger tx-12 d-block mg-t-10">{{ $message }}</p>
             @enderror

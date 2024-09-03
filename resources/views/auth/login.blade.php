@@ -1,4 +1,4 @@
-@extends('layouts.guest-main')
+@extends('layouts.guest')
 
 @section('content')
 <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">

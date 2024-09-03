@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 // auth user routes
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'create'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'create'])->middleware('verified')->name('dashboard');
 
     Route::resource('employees', EmployeeController::class);
 
