@@ -5,31 +5,20 @@
     <ul class="br-sideleft-menu">
         <li class="br-menu-item">
             <a href="{{ route('dashboard') }}" class="br-menu-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : ''}}">
-                <i class="menu-item-icon icon ion-ios-home-outline tx-24"></i>
+                <i class="menu-item-icon icon fa fa-home tx-16"></i>
                 <span class="menu-item-label">Dashboard</span>
             </a><!-- br-menu-link -->
         </li><!-- br-menu-item -->
 
         <li class="br-menu-item">
-            <a href="#" class="br-menu-link with-sub {{ Route::currentRouteName() == 'employees.create' ? 'active' : ''}}">
-                <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <a href="#" class="br-menu-link with-sub {{ in_array(Route::currentRouteName(), ['employees.create', 'employees.index']) ? 'active' : ''}}">
+                <i class="menu-item-icon icon ion-person-stalker tx-20"></i>
                 <span class="menu-item-label">Employee</span>
             </a><!-- br-menu-link -->
             <ul class="br-menu-sub">
-                <li class="sub-item"><a href="{{ route('employees.create') }}" class="sub-link {{ Route::currentRouteName() == 'employees.create' ? 'active' : ''}}">Manage</a></li>
+                <li class="sub-item"><a href="{{ route('employees.create') }}" class="sub-link {{ Route::currentRouteName() == 'employees.create' ? 'active' : ''}}">Add Employee</a></li>
+                <li class="sub-item"><a href="{{ route('employees.index') }}" class="sub-link {{ Route::currentRouteName() == 'employees.index' ? 'active' : ''}}">Manage Employee</a></li>
             </ul>
-        </li>
-
-        <li class="br-menu-item">
-          <a href="#" class="br-menu-link with-sub">
-            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-            <span class="menu-item-label">Cards &amp; Widgets</span>
-          </a><!-- br-menu-link -->
-          <ul class="br-menu-sub">
-            <li class="sub-item"><a href="{{ route('employees.create') }}" class="sub-link">Employee</a></li>
-            <li class="sub-item"><a href="card-social.html" class="sub-link">Blog &amp; Social Media</a></li>
-            <li class="sub-item"><a href="card-listing.html" class="sub-link">Shop &amp; Listing</a></li>
-          </ul>
         </li>
 
     </ul>

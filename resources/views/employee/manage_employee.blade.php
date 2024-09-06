@@ -8,7 +8,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h5 class="mb-2">Employee List</h5>
-                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="align-middle me-1" data-feather="plus-circle"></i> <span class="align-middle">New Employee</span></button>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="align-middle me-1" data-feather="plus-circle"></i> <span class="align-middle">New Employee</span></button>
                 </div>
 
                 <table class="table table-striped table-bordered yajra-datatable mt-2">
