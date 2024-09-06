@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -28,7 +29,27 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+            'phone' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'experience' => ['string', 'max:255'],
+            'nid_no' => ['string', 'max:255'],
+            'salary' => ['required', 'string', 'max:255'],
+            'vacation' => ['string', 'max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+        ]);
+
+        // Employee::create([
+        //     'name' => $request->name,
+        //     'email' => $request->description
+        // ]);
+
+        // return response()->json([
+        //     "status" => "Product Saved Successfully"
+        // ], 201);
     }
 
     /**

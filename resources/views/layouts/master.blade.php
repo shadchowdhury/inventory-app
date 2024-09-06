@@ -8,6 +8,7 @@
 
 
     <!-- Meta -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
@@ -29,12 +30,12 @@
 
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="br-mainpanel">
-        @yield('content')
         <!-- br-pagebody -->
-
+        @yield('content')
         <!-- footer -->
         @include('layouts.footer')
     </div>
+
     <!-- br-mainpanel -->
     <!-- ########## END: MAIN PANEL ########## -->
 

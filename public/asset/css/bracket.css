@@ -148,7 +148,8 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #868ba1;
+  color: black;
+  /* color: #868ba1; */
   text-align: left;
   background-color: #E9ECEF; }
 
