@@ -20,7 +20,9 @@
 <script src="{{ asset('asset/js/map.shiftworker.js') }}"></script>
 <script src="{{ asset('asset/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('asset/js/dashboard.js') }}"></script>
-<!-- <script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
     $(function() {
         'use strict'
 
@@ -47,5 +49,5 @@
             }
         }
     });
-</script> -->
+</script>
 

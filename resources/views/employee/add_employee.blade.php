@@ -38,7 +38,7 @@
                     <div class="row mg-t-20">
                         <label class="col-sm-4 form-control-label">Address: <span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                            <textarea rows="2" id="address" class="form-control" value="{{ old('address') }}" placeholder="Enter employee's address"></textarea>
+                            <textarea rows="2" id="address" class="form-control" value="{{ old('address') }}" autocomplete="address" placeholder="Enter employee's address"></textarea>
                             <span class="tx-danger remove_error" id="error_address"></span>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                     <div class="row mg-t-20">
                         <label class="col-sm-4 form-control-label">NID No.</label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                            <input type="text" id="nid_no" class="form-control" value="{{ old('nid_no') }}" placeholder="Enter employee's NID No.">
+                            <input type="text" id="nid_no" class="form-control" value="{{ old('nid_no') }}" autocomplete="nid_no" placeholder="Enter employee's NID No.">
                             <span class="tx-danger remove_error" id="error_nid_no"></span>
                         </div>
                     </div>
@@ -66,14 +66,14 @@
                     <div class="row mg-t-20">
                         <label class="col-sm-4 form-control-label">Vacation</label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                            <input type="text" id="vacation" class="form-control" value="{{ old('vacation') }}" placeholder="Enter employee's vacation">
+                            <input type="text" id="vacation" class="form-control" value="{{ old('vacation') }}" autocomplete="vacation" placeholder="Enter employee's vacation">
                             <span class="tx-danger remove_error" id="error_vacation"></span>
                         </div>
                     </div>
                     <div class="row mg-t-20">
                         <label class="col-sm-4 form-control-label">City <span class="tx-danger">*</span></label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                            <input type="text" id="city" class="form-control" autocomplete="city" value="{{ old('city') }}" placeholder="Enter employee's city">
+                            <input type="text" id="city" class="form-control" autocomplete="city" value="{{ old('city') }}" autocomplete="city" placeholder="Enter employee's city">
                             <span class="tx-danger remove_error" id="error_city"></span>
                         </div>
                     </div>
@@ -167,19 +167,19 @@
                     jQuery("#salary").val("");
                     jQuery("#vacation").val("");
                     jQuery("#city").val("");
-                    jQuery("#photo").val("");
-
-                    // swal({
-                    //     title: "Success!",
-                    //     text: response.status,
-                    //     icon: "success",
-                    //     timer: 2000,
-                    //     button: false,
-                    // });
+                    jQuery("#image").val("");
+                    //console.log(response.name);
+                    swal({
+                        title: "Success!",
+                        text: response.status,
+                        icon: "success",
+                        timer: 2000,
+                        button: false,
+                    });
                 },
                 error: function(error) {
                     if (error) {
-                        console.log(error.responseJSON.errors.name);
+                        //console.log(error.responseJSON.errors.name);
                         jQuery("#error_name").text(error.responseJSON.errors.name);
                         jQuery("#error_email").text(error.responseJSON.errors.email);
                         jQuery("#error_phone").text(error.responseJSON.errors.phone);
@@ -189,7 +189,7 @@
                         jQuery("#error_salary").text(error.responseJSON.errors.salary);
                         jQuery("#error_vacation").text(error.responseJSON.errors.vacation);
                         jQuery("#error_city").text(error.responseJSON.errors.city);
-                        jQuery("#error_image").text(error.responseJSON.errors.photo);
+                        jQuery("#error_image").text(error.responseJSON.errors.image);
                     }
                 }
             });

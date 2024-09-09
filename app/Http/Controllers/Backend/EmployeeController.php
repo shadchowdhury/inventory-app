@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller
 {
@@ -39,17 +40,30 @@ class EmployeeController extends Controller
             'salary' => ['required', 'string', 'max:255'],
             'vacation' => ['string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:2048']
+            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:200']
         ]);
 
-        // Employee::create([
-        //     'name' => $request->name,
-        //     'email' => $request->description
-        // ]);
+        $path = null;
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('images/employees', $request->image);
+        }
 
-        // return response()->json([
-        //     "status" => "Product Saved Successfully"
-        // ], 201);
+        Employee::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'experience' => $request->experience,
+            'nid_no' => $request->nid_no,
+            'salary' => $request->salary,
+            'vacation' => $request->vacation,
+            'city' => $request->city,
+            'image' => $path
+        ]);
+
+        return response()->json([
+            "status" => "New Employee Added Successfully",
+        ], 201);
     }
 
     /**
