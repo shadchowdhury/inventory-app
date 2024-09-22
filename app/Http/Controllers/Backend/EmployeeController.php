@@ -6,14 +6,36 @@ use App\Http\Controllers\Controller;
 use App\Models\Backend\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\DataTables;
 
 class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $employees = Employee::latest()->get();
+            return Datatables::of($employees)
+                ->addIndexColumn()
+                ->addColumn('image', function ($employee) {
+                    if ($employee->image) {
+                        $imageUrl = asset('storage/' . $employee->image);
+                        return '<img src="'.$imageUrl.'" class="img-thumbnail" width="50" height="50">';
+                    } else {
+                        $imageUrl = asset('storage/images/employees/default.jpg');
+                        return '<img src="'.$imageUrl.'" class="img-thumbnail" width="50" height="50">';
+                    }
+                })
+                ->addColumn('action', function ($employee) {
+                    $btn = '<button class="btn-edit btn btn-info btn-sm" value="' . $employee->id . '"><i class="fa fa-edit"></i></button> ';
+                    $btn .= '<button class="btn-delete btn btn-danger btn-sm" value="' . $employee->id . '"><i class="fa fa-trash"></i></button>';
+                    return $btn;
+                })
+                ->rawColumns(['image','action'])
+                ->make(true);
+        }
         return view('employee.manage_employee');
     }
 

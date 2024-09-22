@@ -21,8 +21,9 @@
 <script src="{{ asset('asset/js/ResizeSensor.js') }}"></script>
 <script src="{{ asset('asset/js/dashboard.js') }}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.3/js/dataTables.min.js"></script>
 
-<script>
+<!-- <script>
     $(function() {
         'use strict'
 
@@ -49,5 +50,5 @@
             }
         }
     });
-</script>
+</script> -->
 
