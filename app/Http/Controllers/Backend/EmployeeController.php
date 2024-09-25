@@ -22,18 +22,18 @@ class EmployeeController extends Controller
                 ->addColumn('image', function ($employee) {
                     if ($employee->image) {
                         $imageUrl = asset('storage/' . $employee->image);
-                        return '<img src="'.$imageUrl.'" class="img-thumbnail" width="50" height="50">';
+                        return '<img src="' . $imageUrl . '" class="img-thumbnail" width="50" height="50">';
                     } else {
                         $imageUrl = asset('storage/images/employees/default.jpg');
-                        return '<img src="'.$imageUrl.'" class="img-thumbnail" width="50" height="50">';
+                        return '<img src="' . $imageUrl . '" class="img-thumbnail" width="50" height="50">';
                     }
                 })
                 ->addColumn('action', function ($employee) {
-                    $btn = '<button class="btn-edit btn btn-info btn-sm" value="' . $employee->id . '"><i class="fa fa-edit"></i></button> ';
-                    $btn .= '<button class="btn-delete btn btn-danger btn-sm" value="' . $employee->id . '"><i class="fa fa-trash"></i></button>';
+                    $btn = '<button class="btn btn-info btn-sm editEmployee" value="' . $employee->id . '"><i class="fa fa-edit"></i></button> ';
+                    $btn .= '<button class="btn btn-danger btn-sm deleteEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#deleteEmployeeModal"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
-                ->rawColumns(['image','action'])
+                ->rawColumns(['image', 'action'])
                 ->make(true);
         }
         return view('employee.manage_employee');
@@ -54,7 +54,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Employee::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'experience' => ['string', 'max:255'],
@@ -117,6 +117,27 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee = Employee::find($id);
+
+        // return response()->json([
+        //     "employee" => "ok"
+        // ]);
+
+        if($employee->image){
+            Storage::disk('public')->delete($employee->image);
+        }
+        $employee->delete();
+
+        if (!$employee) {
+            return response()->json([
+                "status" => "failed",
+                "msg" => "Something went wrong!"
+            ], 210);
+        } else {
+            return response()->json([
+                "status" => "success",
+                "msg" => "This Employee Has Been Deleted Successfully"
+            ], 201);
+        }
     }
 }
