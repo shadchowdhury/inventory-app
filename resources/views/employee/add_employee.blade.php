@@ -137,7 +137,9 @@
             formData.append('salary', salary);
             formData.append('vacation', vacation);
             formData.append('city', city);
-            formData.append('image', file);
+            if (file) {
+                formData.append('image', file);
+            }
 
             $.ajax({
                 url: "{{ Route('employees.store') }}",

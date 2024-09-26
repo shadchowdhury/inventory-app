@@ -29,7 +29,8 @@ class EmployeeController extends Controller
                     }
                 })
                 ->addColumn('action', function ($employee) {
-                    $btn = '<button class="btn btn-info btn-sm editEmployee" value="' . $employee->id . '"><i class="fa fa-edit"></i></button> ';
+                    $btn = '<button class="btn btn-secondary btn-sm viewEmployee" value="' . $employee->id . '"><i class="fa fa-eye"></i></button> ';
+                    $btn .= '<button class="btn btn-info btn-sm editEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#editEmployeeModal"><i class="fa fa-edit"></i></button> ';
                     $btn .= '<button class="btn btn-danger btn-sm deleteEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#deleteEmployeeModal"><i class="fa fa-trash"></i></button>';
                     return $btn;
                 })
@@ -57,12 +58,12 @@ class EmployeeController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'experience' => ['string', 'max:255'],
-            'nid_no' => ['string', 'max:255'],
+            'experience' => ['max:255'],
+            'nid_no' => ['max:255'],
             'salary' => ['required', 'string', 'max:255'],
-            'vacation' => ['string', 'max:255'],
+            'vacation' => ['max:255'],
             'city' => ['required', 'string', 'max:255'],
-            'image' => ['image', 'mimes:jpeg,png,jpg', 'max:200']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:200']
         ]);
 
         $path = null;
@@ -101,7 +102,12 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $employee = Employee::find($id);
+
+        return response()->json([
+            'status' => 'success',
+            'employee' => $employee
+        ]);
     }
 
     /**
