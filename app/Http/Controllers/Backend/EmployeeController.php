@@ -104,9 +104,12 @@ class EmployeeController extends Controller
     {
         $employee = Employee::find($id);
 
+        $image_url = $employee->image ? asset('storage/' . $employee->image) : asset('storage/images/employees/default.jpg') ;
+
         return response()->json([
             'status' => 'success',
-            'employee' => $employee
+            'employee' => $employee,
+            'image_url' => $image_url
         ]);
     }
 

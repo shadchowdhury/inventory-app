@@ -80,6 +80,7 @@
                     <div class="row mg-t-20">
                         <label class="col-sm-4 form-control-label">Photo </label>
                         <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                            <img id="previewImage" class="img-thumbnail" alt="Preview-image" style="width: 70px; height: 80px; margin-bottom: 5px; display: none;">
                             <input type="file" id="image" class="form-control">
                             <span class="tx-danger remove_error" id="error_image"></span>
                         </div>
@@ -107,6 +108,19 @@
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        //Preview Image
+        jQuery('#image').on('change', function() {
+            //jQuery('#previewImage').show();
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result).show();
+                }
+                reader.readAsDataURL(file);
             }
         });
 

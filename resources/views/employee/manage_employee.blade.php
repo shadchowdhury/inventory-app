@@ -110,6 +110,7 @@
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">Photo </label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                                    <img id="previewImage" class="img-thumbnail" alt="Preview-image" style="width: 70px; height: 80px; margin-bottom: 5px; display: none;">
                                     <input type="file" id="image" class="form-control">
                                     <span class="tx-danger remove_error" id="error_image"></span>
                                 </div>
@@ -159,6 +160,19 @@
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        //Preview Image
+        jQuery('#image').on('change', function() {
+            //jQuery('#previewImage').show();
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#previewImage').attr('src', e.target.result).show();
+                }
+                reader.readAsDataURL(file);
             }
         });
 
@@ -256,7 +270,7 @@
         });
 
         //Employee Edit
-        jQuery(document).on("click", ".editEmployee", function(e){
+        jQuery(document).on("click", ".editEmployee", function(e) {
             var id = jQuery(this).val();
             jQuery(".updateEmployee").val(id);
 
@@ -267,7 +281,7 @@
                 url: editUrl,
                 type: "GET",
                 dataType: "JSON",
-                success: function(response){
+                success: function(response) {
                     if (response.status == "success") {
                         jQuery("#name").val(response.employee.name);
                         jQuery("#email").val(response.employee.email);
@@ -278,7 +292,9 @@
                         jQuery("#salary").val(response.employee.salary);
                         jQuery("#vacation").val(response.employee.vacation);
                         jQuery("#city").val(response.employee.city);
-                        jQuery("#image").val(response.employee.image);
+                        if (response.image_url) {
+                            jQuery('#previewImage').attr('src', response.image_url).show();
+                        }
                     }
                 }
             });
