@@ -142,7 +142,7 @@
             let file = fileInput.files[0];
 
             let formData = new FormData();
-            
+
             formData.append('name', name);
             formData.append('email', email);
             formData.append('phone', phone);
@@ -185,6 +185,7 @@
                     jQuery("#vacation").val("");
                     jQuery("#city").val("");
                     jQuery("#image").val("");
+                    jQuery('#previewImage').hide();
                     //console.log(response.name);
                     swal({
                         title: "Success!",

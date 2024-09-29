@@ -164,7 +164,7 @@
         });
 
         //Preview Image
-        jQuery('#image').on('change', function() {
+        jQuery('#emimage').on('change', function() {
             //jQuery('#previewImage').show();
             const file = this.files[0];
             if (file) {
@@ -306,15 +306,15 @@
 
             jQuery(".remove_error").text("");
 
-            // let name = jQuery(".name").val();
-            // let email = jQuery(".email").val();
-            // let phone = jQuery(".phone").val();
-            // let address = jQuery(".address").val();
-            // let experience = jQuery(".experience").val();
-            // let nid_no = jQuery(".nid_no").val();
-            // let salary = jQuery(".salary").val();
-            // let vacation = jQuery(".vacation").val();
-            // let city = jQuery(".city").val();
+            let name = jQuery(".name").val();
+            let email = jQuery(".email").val();
+            let phone = jQuery(".phone").val();
+            let address = jQuery(".address").val();
+            let experience = jQuery(".experience").val();
+            let nid_no = jQuery(".nid_no").val();
+            let salary = jQuery(".salary").val();
+            let vacation = jQuery(".vacation").val();
+            let city = jQuery(".city").val();
             let fileInput = $('.image')[0];
             let file = fileInput.files[0];
 
@@ -329,14 +329,17 @@
             // formData.append('salary', salary);
             // formData.append('vacation', vacation);
             // formData.append('city', city);
-            // if (file) {
-            //     formData.append('image', file);
-            // }
+            if (!file) {
+                file = null;
+            }
 
             var updateUrl = '{{route("employees.update", ":id")}}';
             updateUrl = updateUrl.replace(":id", id);
 
-            //console.log(updateUrl);
+
+            console.log(name);
+
+            console.log(file);
             // for (let [key, value] of formData.entries()) {
             //     console.log(key, value);
             // }
@@ -346,10 +349,19 @@
                 type: "PUT",
                 dataType: "JSON",
                 data: {
-                    'name' : jQuery(".name").val()
+                    name : name,
+                    email : email,
+                    phone : phone,
+                    address : address,
+                    experience : experience,
+                    nid_no : nid_no,
+                    salary : salary,
+                    vacation : vacation,
+                    city : city
+
                 },
-                processData: false,
-                contentType: false,
+                // processData: false,
+                // contentType: false,
                 success: function(response) {
                     // jQuery("#error_name").text("");
                     // jQuery("#error_email").text("");
@@ -361,6 +373,9 @@
                     // jQuery("#error_vacation").text("");
                     // jQuery("#error_city").text("");
                     // jQuery("#error_image").text("");
+                    table.ajax.reload();
+                    jQuery('#previewImage').hide();
+                    jQuery("#editEmployeeModal").modal("hide");
 
                     jQuery("#emname").val("");
                     jQuery("#ememail").val("");
@@ -372,7 +387,8 @@
                     jQuery("#emvacation").val("");
                     jQuery("#emcity").val("");
                     jQuery("#emimage").val("");
-                    // //console.log(response.name);
+
+                    console.log(response.request);
                     swal({
                         title: "Success!",
                         text: response.status,

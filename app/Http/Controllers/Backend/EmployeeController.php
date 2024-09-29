@@ -119,21 +119,21 @@ class EmployeeController extends Controller
     public function update(Request $request, string $id)
     {
         return response()->json([
-            'request' => $request->name
+            'request' => $request->name,
         ]);
 
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class . ',email,' . $id],
-            'phone' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'experience' => ['max:255'],
-            'nid_no' => ['max:255'],
-            'salary' => ['required', 'string', 'max:255'],
-            'vacation' => ['max:255'],
-            'city' => ['required', 'string', 'max:255'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:200']
-        ]);
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class . ',email,' . $id],
+        //     'phone' => ['required', 'string', 'max:255'],
+        //     'address' => ['required', 'string', 'max:255'],
+        //     'experience' => ['max:255'],
+        //     'nid_no' => ['max:255'],
+        //     'salary' => ['required', 'string', 'max:255'],
+        //     'vacation' => ['max:255'],
+        //     'city' => ['required', 'string', 'max:255'],
+        //     'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:200']
+        // ]);
 
         // $employee = Employee::find($id);
 
