@@ -142,6 +142,7 @@
             let file = fileInput.files[0];
 
             let formData = new FormData();
+            
             formData.append('name', name);
             formData.append('email', email);
             formData.append('phone', phone);
@@ -200,7 +201,7 @@
                         jQuery("#error_email").text(error.responseJSON.errors.email);
                         jQuery("#error_phone").text(error.responseJSON.errors.phone);
                         jQuery("#error_address").text(error.responseJSON.errors.address);
-                        jQuery("#error_experience").text(error.responseJSON.errors.experirnce);
+                        jQuery("#error_experience").text(error.responseJSON.errors.experience);
                         jQuery("#error_nid_no").text(error.responseJSON.errors.nid_no);
                         jQuery("#error_salary").text(error.responseJSON.errors.salary);
                         jQuery("#error_vacation").text(error.responseJSON.errors.vacation);

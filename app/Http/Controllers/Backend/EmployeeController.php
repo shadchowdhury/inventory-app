@@ -118,7 +118,51 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return response()->json([
+            'request' => $request->name
+        ]);
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class . ',email,' . $id],
+            'phone' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'experience' => ['max:255'],
+            'nid_no' => ['max:255'],
+            'salary' => ['required', 'string', 'max:255'],
+            'vacation' => ['max:255'],
+            'city' => ['required', 'string', 'max:255'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:200']
+        ]);
+
+        // $employee = Employee::find($id);
+
+        // // Update image if exist
+        // $path = $employee->image ?? null;
+        // if ($request->hasFile('image')) {
+        //     if ($employee->image) {
+        //         Storage::disk('public')->delete($employee->image);
+        //     }
+        //     $path = Storage::disk('public')->put('images/employees', $request->image);
+        // }
+
+        // //Update the post
+        // $employee->update([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'address' => $request->address,
+        //     'experience' => $request->experience,
+        //     'nid_no' => $request->nid_no,
+        //     'salary' => $request->salary,
+        //     'vacation' => $request->vacation,
+        //     'city' => $request->city,
+        //     'image' => $path
+        // ]);
+
+        // return response()->json([
+        //     "status" => "Employee Updated Successfully",
+        // ], 201);
     }
 
     /**
