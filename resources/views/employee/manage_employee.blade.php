@@ -34,9 +34,10 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content bd-0">
+        <form class="modal-content bd-0">
             <div class="modal-header pd-y-20 pd-x-25">
                 <h6 class="tx-18 mg-b-0 tx-inverse tx-bold">Edit Employee's Information</h6>
             </div>
@@ -45,28 +46,32 @@
                     <div class="col-xl-12">
                         <div class="form-layout form-layout-4">
                             <div class="row">
-                                <label class="col-sm-4 form-control-label">Fullname: <span class="tx-danger">*</span></label>
+                                <label class="col-sm-4 form-control-label">Fullname: <span
+                                        class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <input type="text" id="emname" class="form-control name" autofocus>
                                     <span class="tx-danger remove_error" id="error_name"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
-                                <label class="col-sm-4 form-control-label">Email: <span class="tx-danger">*</span></label>
+                                <label class="col-sm-4 form-control-label">Email: <span
+                                        class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <input type="email" id="ememail" class="form-control email">
                                     <span class="tx-danger remove_error" id="error_email"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
-                                <label class="col-sm-4 form-control-label">Mobile No. <span class="tx-danger">*</span></label>
+                                <label class="col-sm-4 form-control-label">Mobile No. <span
+                                        class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <input type="text" id="emphone" class="form-control phone">
                                     <span class="tx-danger remove_error" id="error_phone"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
-                                <label class="col-sm-4 form-control-label">Address: <span class="tx-danger">*</span></label>
+                                <label class="col-sm-4 form-control-label">Address: <span
+                                        class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <textarea rows="2" id="emaddress" class="form-control address"></textarea>
                                     <span class="tx-danger remove_error" id="error_address"></span>
@@ -87,7 +92,8 @@
                                 </div>
                             </div>
                             <div class="row mg-t-20">
-                                <label class="col-sm-4 form-control-label">Salary <span class="tx-danger">*</span></label>
+                                <label class="col-sm-4 form-control-label">Salary <span
+                                        class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <input type="text" id="emsalary" class="form-control salary">
                                     <span class="tx-danger remove_error" id="error_salary"></span>
@@ -110,7 +116,8 @@
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">Photo </label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <img id="previewImage" class="img-thumbnail" alt="Preview-image" style="width: 70px; height: 80px; margin-bottom: 5px; display: none;">
+                                    <img id="previewImage" class="img-thumbnail" alt="Preview-image"
+                                        style="width: 70px; height: 80px; margin-bottom: 5px; display: none;">
                                     <input type="file" id="emimage" class="form-control image">
                                     <span class="tx-danger remove_error" id="error_image"></span>
                                 </div>
@@ -120,15 +127,20 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="updateEmployee btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" value="">Update Employee</button>
-                <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" data-dismiss="modal">Close</button>
+                <button type="button"
+                    class="updateEmployee btn btn-primary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
+                    value="">Update Employee</button>
+                <button type="button"
+                    class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
+                    data-dismiss="modal">Close</button>
             </div>
-        </div>
     </div>
+</div>
 </div>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content bd-0">
             <div class="modal-header pd-y-20 pd-x-25">
@@ -141,8 +153,12 @@
                 <h4 class="lh-4 mg-b-20 tx-inverse">Are you sure! Want to delete this Employee?</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="employeeDelete btn btn-danger tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" value="">Yes</button>
-                <button type="button" class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1" data-dismiss="modal">No</button>
+                <button type="button"
+                    class="employeeDelete btn btn-danger tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
+                    value="">Yes</button>
+                <button type="button"
+                    class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
+                    data-dismiss="modal">No</button>
             </div>
         </div>
     </div>
@@ -302,6 +318,7 @@
 
         //Update Employee
         jQuery(document).on("click", ".updateEmployee", function(e) {
+            e.preventDefault();
             var id = jQuery(this).val();
 
             jQuery(".remove_error").text("");
@@ -318,36 +335,37 @@
             let fileInput = $('.image')[0];
             let file = fileInput.files[0];
 
-            // let formData = new FormData();
-
-            // formData.append('name', name);
-            // formData.append('email', email);
-            // formData.append('phone', phone);
-            // formData.append('address', address);
-            // formData.append('experience', experience);
-            // formData.append('nid_no', nid_no);
-            // formData.append('salary', salary);
-            // formData.append('vacation', vacation);
-            // formData.append('city', city);
-            if (!file) {
-                file = null;
-            }
-
-            var updateUrl = '{{route("employees.update", ":id")}}';
+            var updateUrl = '{{ route("employees.update", ":id") }}';
             updateUrl = updateUrl.replace(":id", id);
 
+            // Create a new FormData object
+            var formData = new FormData();
+            formData.append('_method', 'PUT');
+            formData.append('name', $('.name').val());
+            formData.append('email', $('.email').val());
+            formData.append('phone', $('.phone').val());
+            formData.append('address', $('.address').val());
+            formData.append('experience', $('.experience').val());
+            formData.append('nid_no', $('.nid_no').val());
+            formData.append('salary', $('.salary').val());
+            formData.append('vacation', $('.vacation').val());
+            formData.append('city', $('.city').val());
+            if (file) {
+                formData.append('image', file);
+            }
 
-            console.log(name);
-
-            console.log(file);
-            // for (let [key, value] of formData.entries()) {
-            //     console.log(key, value);
-            // }
+            // Check if file exists before appending
+            if (file) {
+                formData.append('image', file);
+            }
 
             $.ajax({
                 url: updateUrl,
-                type: "PUT",
+                type: "POST",  // Laravel's method spoofing (via hidden _method) will convert this to PUT
                 dataType: "JSON",
+                data: formData,
+                processData: false,  // Do not process data
+                contentType: false,  // Do not set contentType
                 data: {
                     name : name,
                     email : email,
@@ -363,6 +381,7 @@
                 // processData: false,
                 // contentType: false,
                 success: function(response) {
+                    // Clear form fields
                     // jQuery("#error_name").text("");
                     // jQuery("#error_email").text("");
                     // jQuery("#error_phone").text("");
@@ -388,6 +407,8 @@
                     jQuery("#emcity").val("");
                     jQuery("#emimage").val("");
 
+                    // Display success message
+
                     console.log(response.request);
                     swal({
                         title: "Success!",
@@ -399,7 +420,7 @@
                 },
                 error: function(error) {
                     if (error) {
-                        //console.log(error.responseJSON.errors);
+                        // Display errors
                         jQuery("#error_name").text(error.responseJSON.errors.name);
                         jQuery("#error_email").text(error.responseJSON.errors.email);
                         jQuery("#error_phone").text(error.responseJSON.errors.phone);
@@ -413,8 +434,8 @@
                     }
                 }
             });
-
         });
+
 
     });
 </script>
