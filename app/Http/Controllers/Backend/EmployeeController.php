@@ -118,10 +118,7 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return response()->json([
-            'request' => $request->name
-        ]);
-
+        return $request;
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Employee::class . ',email,' . $id],
@@ -160,9 +157,9 @@ class EmployeeController extends Controller
         //     'image' => $path
         // ]);
 
-        // return response()->json([
-        //     "status" => "Employee Updated Successfully",
-        // ], 201);
+        return response()->json([
+            "status" => "Employee Updated Successfully",
+        ], 201);
     }
 
     /**
