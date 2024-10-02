@@ -129,29 +129,22 @@
 
             jQuery(".remove_error").text("");
 
-            let name = jQuery("#name").val();
-            let email = jQuery("#email").val();
-            let phone = jQuery("#phone").val();
-            let address = jQuery("#address").val();
-            let experience = jQuery("#experience").val();
-            let nid_no = jQuery("#nid_no").val();
-            let salary = jQuery("#salary").val();
-            let vacation = jQuery("#vacation").val();
-            let city = jQuery("#city").val();
             let fileInput = $('#image')[0];
             let file = fileInput.files[0];
 
             let formData = new FormData();
 
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('phone', phone);
-            formData.append('address', address);
-            formData.append('experience', experience);
-            formData.append('nid_no', nid_no);
-            formData.append('salary', salary);
-            formData.append('vacation', vacation);
-            formData.append('city', city);
+            formData.append('name', $('#name').val());
+            formData.append('email', $('#email').val());
+            formData.append('phone', $('#phone').val());
+            formData.append('address', $('#address').val());
+            formData.append('experience', $('#experience').val());
+            formData.append('nid_no', $('#nid_no').val());
+            formData.append('salary', $('#salary').val());
+            formData.append('vacation', $('#vacation').val());
+            formData.append('city', $('#city').val());
+
+            // Check if file exists before appending
             if (file) {
                 formData.append('image', file);
             }
@@ -164,16 +157,16 @@
                 processData: false,
                 contentType: false,
                 success: function(response) {
-                    jQuery("#error_name").text("");
-                    jQuery("#error_email").text("");
-                    jQuery("#error_phone").text("");
-                    jQuery("#error_address").text("");
-                    jQuery("#error_experience").text("");
-                    jQuery("#error_nid_no").text("");
-                    jQuery("#error_salary").text("");
-                    jQuery("#error_vacation").text("");
-                    jQuery("#error_city").text("");
-                    jQuery("#error_image").text("");
+                    // jQuery("#error_name").text("");
+                    // jQuery("#error_email").text("");
+                    // jQuery("#error_phone").text("");
+                    // jQuery("#error_address").text("");
+                    // jQuery("#error_experience").text("");
+                    // jQuery("#error_nid_no").text("");
+                    // jQuery("#error_salary").text("");
+                    // jQuery("#error_vacation").text("");
+                    // jQuery("#error_city").text("");
+                    // jQuery("#error_image").text("");
 
                     jQuery("#name").val("");
                     jQuery("#email").val("");

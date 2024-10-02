@@ -34,10 +34,9 @@
 </div>
 
 <!-- Edit Modal -->
-<div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-        <form class="modal-content bd-0">
+        <div class="modal-content bd-0">
             <div class="modal-header pd-y-20 pd-x-25">
                 <h6 class="tx-18 mg-b-0 tx-inverse tx-bold">Edit Employee's Information</h6>
             </div>
@@ -49,7 +48,7 @@
                                 <label class="col-sm-4 form-control-label">Fullname: <span
                                         class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emname" class="form-control name" autofocus>
+                                    <input type="text" id="name" class="form-control" autofocus>
                                     <span class="tx-danger remove_error" id="error_name"></span>
                                 </div>
                             </div>
@@ -57,7 +56,7 @@
                                 <label class="col-sm-4 form-control-label">Email: <span
                                         class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="email" id="ememail" class="form-control email">
+                                    <input type="email" id="email" class="form-control">
                                     <span class="tx-danger remove_error" id="error_email"></span>
                                 </div>
                             </div>
@@ -65,7 +64,7 @@
                                 <label class="col-sm-4 form-control-label">Mobile No. <span
                                         class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emphone" class="form-control phone">
+                                    <input type="text" maxlength="13" id="phone" class="form-control">
                                     <span class="tx-danger remove_error" id="error_phone"></span>
                                 </div>
                             </div>
@@ -73,21 +72,21 @@
                                 <label class="col-sm-4 form-control-label">Address: <span
                                         class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <textarea rows="2" id="emaddress" class="form-control address"></textarea>
+                                    <textarea rows="2" id="address" class="form-control"></textarea>
                                     <span class="tx-danger remove_error" id="error_address"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">Experience</label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emexperience" class="form-control experience">
+                                    <input type="text" id="experience" class="form-control">
                                     <span class="tx-danger remove_error" id="error_experience"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">NID No.</label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emnid_no" class="form-control nid_no">
+                                    <input type="text" id="nid_no" class="form-control nid_no">
                                     <span class="tx-danger remove_error" id="error_nid_no"></span>
                                 </div>
                             </div>
@@ -95,21 +94,21 @@
                                 <label class="col-sm-4 form-control-label">Salary <span
                                         class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emsalary" class="form-control salary">
+                                    <input type="text" id="salary" class="form-control">
                                     <span class="tx-danger remove_error" id="error_salary"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">Vacation</label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emvacation" class="form-control vacation">
+                                    <input type="text" id="vacation" class="form-control">
                                     <span class="tx-danger remove_error" id="error_vacation"></span>
                                 </div>
                             </div>
                             <div class="row mg-t-20">
                                 <label class="col-sm-4 form-control-label">City <span class="tx-danger">*</span></label>
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                                    <input type="text" id="emcity" class="form-control city">
+                                    <input type="text" id="city" class="form-control">
                                     <span class="tx-danger remove_error" id="error_city"></span>
                                 </div>
                             </div>
@@ -118,7 +117,7 @@
                                 <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                                     <img id="previewImage" class="img-thumbnail" alt="Preview-image"
                                         style="width: 70px; height: 80px; margin-bottom: 5px; display: none;">
-                                    <input type="file" id="emimage" class="form-control image">
+                                    <input type="file" id="image" class="form-control">
                                     <span class="tx-danger remove_error" id="error_image"></span>
                                 </div>
                             </div>
@@ -134,9 +133,10 @@
                     class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
                     data-dismiss="modal">Close</button>
             </div>
+        </div>
     </div>
 </div>
-</div>
+
 
 <!-- Delete Modal -->
 <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -180,7 +180,7 @@
         });
 
         //Preview Image
-        jQuery('#emimage').on('change', function() {
+        jQuery('#image').on('change', function() {
             //jQuery('#previewImage').show();
             const file = this.files[0];
             if (file) {
@@ -299,15 +299,15 @@
                 dataType: "JSON",
                 success: function(response) {
                     if (response.status == "success") {
-                        jQuery("#emname").val(response.employee.name);
-                        jQuery("#ememail").val(response.employee.email);
-                        jQuery("#emphone").val(response.employee.phone);
-                        jQuery("#emaddress").val(response.employee.address);
-                        jQuery("#emexperience").val(response.employee.experience);
-                        jQuery("#emnid_no").val(response.employee.nid_no);
-                        jQuery("#emsalary").val(response.employee.salary);
-                        jQuery("#emvacation").val(response.employee.vacation);
-                        jQuery("#emcity").val(response.employee.city);
+                        jQuery("#name").val(response.employee.name);
+                        jQuery("#email").val(response.employee.email);
+                        jQuery("#phone").val(response.employee.phone);
+                        jQuery("#address").val(response.employee.address);
+                        jQuery("#experience").val(response.employee.experience);
+                        jQuery("#nid_no").val(response.employee.nid_no);
+                        jQuery("#salary").val(response.employee.salary);
+                        jQuery("#vacation").val(response.employee.vacation);
+                        jQuery("#city").val(response.employee.city);
                         if (response.image_url) {
                             jQuery('#previewImage').attr('src', response.image_url).show();
                         }
@@ -318,21 +318,12 @@
 
         //Update Employee
         jQuery(document).on("click", ".updateEmployee", function(e) {
-            e.preventDefault();
+            //e.preventDefault();
             var id = jQuery(this).val();
 
             jQuery(".remove_error").text("");
 
-            let name = jQuery(".name").val();
-            let email = jQuery(".email").val();
-            let phone = jQuery(".phone").val();
-            let address = jQuery(".address").val();
-            let experience = jQuery(".experience").val();
-            let nid_no = jQuery(".nid_no").val();
-            let salary = jQuery(".salary").val();
-            let vacation = jQuery(".vacation").val();
-            let city = jQuery(".city").val();
-            let fileInput = $('.image')[0];
+            let fileInput = $('#image')[0];
             let file = fileInput.files[0];
 
             var updateUrl = '{{ route("employees.update", ":id") }}';
@@ -340,19 +331,18 @@
 
             // Create a new FormData object
             var formData = new FormData();
+
             formData.append('_method', 'PUT');
-            formData.append('name', $('.name').val());
-            formData.append('email', $('.email').val());
-            formData.append('phone', $('.phone').val());
-            formData.append('address', $('.address').val());
-            formData.append('experience', $('.experience').val());
-            formData.append('nid_no', $('.nid_no').val());
-            formData.append('salary', $('.salary').val());
-            formData.append('vacation', $('.vacation').val());
-            formData.append('city', $('.city').val());
-            if (file) {
-                formData.append('image', file);
-            }
+
+            formData.append('name', $('#name').val());
+            formData.append('email', $('#email').val());
+            formData.append('phone', $('#phone').val());
+            formData.append('address', $('#address').val());
+            formData.append('experience', $('#experience').val());
+            formData.append('nid_no', $('#nid_no').val());
+            formData.append('salary', $('#salary').val());
+            formData.append('vacation', $('#vacation').val());
+            formData.append('city', $('#city').val());
 
             // Check if file exists before appending
             if (file) {
@@ -361,55 +351,30 @@
 
             $.ajax({
                 url: updateUrl,
-                type: "POST",  // Laravel's method spoofing (via hidden _method) will convert this to PUT
+                type: "POST", // Laravel's method spoofing (via hidden _method) will convert this to PUT
                 dataType: "JSON",
                 data: formData,
-                processData: false,  // Do not process data
-                contentType: false,  // Do not set contentType
-                data: {
-                    name : name,
-                    email : email,
-                    phone : phone,
-                    address : address,
-                    experience : experience,
-                    nid_no : nid_no,
-                    salary : salary,
-                    vacation : vacation,
-                    city : city
-
-                },
-                // processData: false,
-                // contentType: false,
+                processData: false, // Do not process data
+                contentType: false, // Do not set contentType
                 success: function(response) {
-                    // Clear form fields
-                    // jQuery("#error_name").text("");
-                    // jQuery("#error_email").text("");
-                    // jQuery("#error_phone").text("");
-                    // jQuery("#error_address").text("");
-                    // jQuery("#error_experience").text("");
-                    // jQuery("#error_nid_no").text("");
-                    // jQuery("#error_salary").text("");
-                    // jQuery("#error_vacation").text("");
-                    // jQuery("#error_city").text("");
-                    // jQuery("#error_image").text("");
+                    //Reload DataTable
                     table.ajax.reload();
+
+                    // Clear form fields
+                    jQuery("#name").val("");
+                    jQuery("#email").val("");
+                    jQuery("#phone").val("");
+                    jQuery("#address").val("");
+                    jQuery("#experience").val("");
+                    jQuery("#nid_no").val("");
+                    jQuery("#salary").val("");
+                    jQuery("#vacation").val("");
+                    jQuery("#city").val("");
+                    jQuery("#image").val("");
                     jQuery('#previewImage').hide();
                     jQuery("#editEmployeeModal").modal("hide");
 
-                    jQuery("#emname").val("");
-                    jQuery("#ememail").val("");
-                    jQuery("#emphone").val("");
-                    jQuery("#emaddress").val("");
-                    jQuery("#emexperience").val("");
-                    jQuery("#emnid_no").val("");
-                    jQuery("#emsalary").val("");
-                    jQuery("#emvacation").val("");
-                    jQuery("#emcity").val("");
-                    jQuery("#emimage").val("");
-
                     // Display success message
-
-                    console.log(response.request);
                     swal({
                         title: "Success!",
                         text: response.status,
