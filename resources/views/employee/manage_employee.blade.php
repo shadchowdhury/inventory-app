@@ -165,6 +165,141 @@
 </div>
 
 
+<!-- show Modal -->
+<div class="modal fade" id="showEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bd-0">
+            <div class="modal-header pd-y-20 pd-x-25">
+                <h6 class="tx-18 mg-b-0 tx-inverse tx-bold">Employee Details</h6>
+            </div>
+            <div class="modal-body pd-25">
+                <div class="row">
+                    <div class="col-xl-10 offset-1 border pd-5">
+                        <div class="text-center mb-3">
+                            <img src="" id="showImage" alt="Employee Image" class="img-fluid rounded-circle" style="width: 120px; height: 130px;">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Name</strong></p>
+                            </div>
+                            <div class="col-xl-1  text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emName"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Email</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emEmail"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Mobile No.</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emPhone"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Address</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emAddress"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Experience</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emExperience"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>NID No.</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emNid_no"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Salary</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emSalary"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>Vacation</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emVacation"></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-4 text-center">
+                                <p><strong>City</strong></p>
+                            </div>
+                            <div class="col-xl-1 text-center">
+                                <p><strong>:</strong></p>
+                            </div>
+                            <div class="col-xl-7 text-left">
+                                <p id="emCity"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button"
+                    class="btn btn-secondary tx-mont tx-medium tx-11 tx-uppercase pd-y-12 pd-x-25 tx-spacing-1"
+                    data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @endsection
 
 
@@ -401,7 +536,36 @@
             });
         });
 
+        //Show Employee Details
+        jQuery(document).on("click", ".viewEmployee", function(e) {
+            var id = jQuery(this).val();
 
+            var showUrl = '{{ route("employees.show", ":id") }}';
+            showUrl = showUrl.replace(':id', id);
+
+            $.ajax({
+                url: showUrl,
+                type: "GET",
+                dataType: "JSON",
+                success: function(response) {
+                    if (response.status == "success") {
+                        console.log(response.employee.name);
+                        jQuery("#emName").text(response.employee.name);
+                        jQuery("#emEmail").text(response.employee.email);
+                        jQuery("#emPhone").text(response.employee.phone);
+                        jQuery("#emAddress").text(response.employee.address);
+                        jQuery("#emExperience").text(response.employee.experience);
+                        jQuery("#emNid_no").text(response.employee.nid_no);
+                        jQuery("#emSalary").text(response.employee.salary);
+                        jQuery("#emVacation").text(response.employee.vacation);
+                        jQuery("#emCity").text(response.employee.city);
+                        if (response.image_url) {
+                            jQuery('#showImage').attr('src', response.image_url);
+                        }
+                    }
+                }
+            });
+        });
     });
 </script>
 @endpush

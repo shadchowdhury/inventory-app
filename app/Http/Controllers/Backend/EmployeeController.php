@@ -29,7 +29,7 @@ class EmployeeController extends Controller
                     }
                 })
                 ->addColumn('action', function ($employee) {
-                    $btn = '<button class="btn btn-secondary btn-sm viewEmployee" value="' . $employee->id . '"><i class="fa fa-eye"></i></button> ';
+                    $btn = '<button class="btn btn-secondary btn-sm viewEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#showEmployeeModal"><i class="fa fa-eye"></i></button> ';
                     $btn .= '<button class="btn btn-info btn-sm editEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#editEmployeeModal"><i class="fa fa-edit"></i></button> ';
                     $btn .= '<button class="btn btn-danger btn-sm deleteEmployee" value="' . $employee->id . '" data-toggle="modal" data-target="#deleteEmployeeModal"><i class="fa fa-trash"></i></button>';
                     return $btn;
@@ -95,7 +95,15 @@ class EmployeeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $employee = Employee::find($id);
+
+        $image_url = $employee->image ? asset('storage/' . $employee->image) : asset('storage/images/employees/default.jpg') ;
+
+        return response()->json([
+            'status' => 'success',
+            'employee' => $employee,
+            'image_url' => $image_url
+        ]);
     }
 
     /**
